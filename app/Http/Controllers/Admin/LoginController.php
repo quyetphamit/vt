@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\LoginRequest;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
+
 
 class LoginController extends Controller
 {
@@ -19,11 +19,12 @@ class LoginController extends Controller
         $login = [
             'username' => $request->input('txtUsername'),
             'password' => $request->input('txtPassword'),
-            'level' => 0 or 1
+            'level' => [0, 1]
         ];
         if (Auth::attempt($login)) {
-            return redirect('admin');
-
+//            return redirect('admin');
+//            print_r($login);
+            echo "ok";
         } else {
             $errors = "Tên đăng nhập hoặc mật khẩu sai!";
             //return redirect()->back()->withErrors($errors);
