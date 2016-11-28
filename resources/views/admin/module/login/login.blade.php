@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>Login</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{!! asset('public/admin/vendor/bootstrap/css/bootstrap.min.css') !!}" rel="stylesheet">
@@ -19,8 +19,8 @@
 
     <!-- Custom CSS -->
     <link href="{!! asset('public/admin/dist/css/sb-admin-2.css') !!}" rel="stylesheet">
-    {{--<link href="{!! asset('public/css/style.css') !!}" rel="stylesheet">--}}
-    <!-- Custom Fonts -->
+{{--<link href="{!! asset('public/css/style.css') !!}" rel="stylesheet">--}}
+<!-- Custom Fonts -->
     <link href=" {!! asset('public/admin/vendor/font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet"
           type="text/css">
 
