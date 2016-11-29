@@ -18,21 +18,40 @@
                     <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
                         <tr>
-                            <th>Rendering engine</th>
-                            <th>Browser</th>
-                            <th>Platform(s)</th>
-                            <th>Engine version</th>
-                            <th>CSS grade</th>
+                            <th>STT</th>
+                            <th>Username</th>
+                            <th>Fullname</th>
+                            <th>Level</th>
+                            <th>Quản lý</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="odd gradeX">
-                            <td>Trident</td>
-                            <td>Internet Explorer 4.0</td>
-                            <td>Win 95+</td>
-                            <td class="center">4</td>
-                            <td class="center">X</td>
-                        </tr>
+                        @foreach($data as $key=>$item)
+                            <tr class="odd gradeX">
+                                <td>{!! ++$key !!}</td>
+                                <td>{!! $item['username'] !!}</td>
+                                <td>{!! $item['fullname'] !!}</td>
+
+                                <td class="center">
+                                    @if($item['level']==0)
+                                        Super Admin
+                                    @elseif($item['level']==1)
+                                        Admin
+                                    @else
+                                        Member
+                                    @endif
+                                </td>
+                                <td class="center">
+                                    <a href="#">
+                                        <img src="{!! asset('public/images/edit.png') !!}">
+                                    </a>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <a href="#">
+                                        <img src="{!! asset('public/images/delete.png') !!}">
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                     <div class="well">
@@ -53,15 +72,4 @@
         </div>
         <!-- /.col-lg-12 -->
     </div>
-    <!-- DataTables JavaScript -->
-    <script src="{!! asset('public/admin/vendor/datatables/js/jquery.dataTables.min.js') !!}"></script>
-    <script src="{!! asset('public/admin/vendor/datatables-plugins/dataTables.bootstrap.min.js') !!}"></script>
-    <script src="{!! asset('public/admin/vendor/datatables-responsive/dataTables.responsive.js') !!}"></script>
-    <script>
-        $(document).ready(function () {
-            $('#dataTables-example').DataTable({
-                responsive: true
-            });
-        });
-    </script>
 @endsection

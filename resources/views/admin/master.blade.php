@@ -291,11 +291,11 @@
                         <a href=""><i class="fa fa-dashboard fa-fw"></i> Thiết lập chung</a>
                     </li>
                     <li>
-                        <a href="admin/module/user/tables.html"><i class="fa fa-table fa-fw"></i> Danh sách thành
+                        <a href="{!! route('getUserList') !!}"><i class="fa fa-table fa-fw"></i> Danh sách thành
                             viên</a>
                     </li>
                     <li>
-                        <a href="module/forms.html"><i class="fa fa-edit fa-fw"></i> Thêm mới thành viên</a>
+                        <a href="{!! route('getUserAdd') !!}"><i class="fa fa-edit fa-fw"></i> Thêm mới thành viên</a>
                     </li>
                 </ul>
             </div>
@@ -330,6 +330,16 @@
 <!-- Custom Theme JavaScript -->
 <script src="{!! asset('public/admin/dist/js/sb-admin-2.js') !!}"></script>
 
+<script src="{!! asset('public/admin/vendor/datatables/js/jquery.dataTables.min.js') !!}"></script>
+<script src="{!! asset('public/admin/vendor/datatables-plugins/dataTables.bootstrap.min.js') !!}"></script>
+<script src="{!! asset('public/admin/vendor/datatables-responsive/dataTables.responsive.js') !!}"></script>
+<script>
+    $(document).ready(function () {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    });
+</script>
 </body>
 
 </html>
