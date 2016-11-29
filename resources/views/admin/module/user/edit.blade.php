@@ -2,7 +2,7 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Thêm mới thành viên</h1>
+            <h1 class="page-header">Sửa thông tin thành viên</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -18,16 +18,16 @@
                         <div class="col-lg-6">
                             <form role="form" method="post">
                                 <input type="hidden" name="_token" value="{!! csrf_token() !!}">
-                                <div class="@include('admin.status.createUser')">
+                                <div class="form-group">
                                     <label>Tên đăng nhập</label>
-                                    <input class="form-control" placeholder="Nhập tên đăng nhập" name="txtUsername"
-                                           value="{!! old('txtUsername') !!}" autofocus>
+                                    <input class="form-control" disabled name="txtUsername"
+                                           value="{!!$data['username'] !!}">
                                     <label class="control-label"
                                            for="inputError">{!! $errors->first('txtUsername') !!}</label>
                                 </div>
                                 <div class="@include('admin.status.createUser')">
-                                    <label>Mật khẩu</label>
-                                    <input type="password" class="form-control" placeholder="Nhập mật khẩu"
+                                    <label>Mật khẩu mới</label>
+                                    <input type="password" class="form-control" placeholder="Nhập mật khẩu mới"
                                            name="txtPassword">
                                     <label class="control-label"
                                            for="inputError">{!! $errors->first('txtPassword') !!}</label>
@@ -41,19 +41,24 @@
                                 </div>
                                 <div class="@include('admin.status.createUser')">
                                     <label>Họ tên</label>
-                                    <input class="form-control" placeholder="Nhập họ tên" name="txtFullname"
-                                           value="{!! old('txtFullname') !!}">
+                                    <input class="form-control" name="txtFullname"
+                                           value="{!! $data['fullname'] !!}"
+                                           @if($data['id'] != Auth::user()->id)
+                                           disabled
+                                            @endif
+                                    >
                                     <label class="control-label"
                                            for="inputError">{!! $errors->first('txtFullname') !!}</label>
                                 </div>
                                 <div class="form-group">
                                     <label>Level</label>
                                     {{--Kiểm tra điều kiện hiển thị radio--}}
-                                    @if(Auth::user()->level == 0)
+                                    @if($currLevel == 0)
                                         <div class="radio">
                                             <label>
                                                 <input type="radio" name="rdoLevel" id="optionsRadios1" value="0"
-                                                       checked>Super Admin
+                                                       checked
+                                                >Super Admin
                                             </label>
                                         </div>
                                         <div class="radio">
@@ -65,14 +70,20 @@
                                         <div class="radio">
                                             <label>
                                                 <input type="radio" name="rdoLevel" id="optionsRadios1" value="1"
-                                                       checked>Admin
+                                                       @if($data['level'] == 1)
+                                                       checked
+                                                        @endif >Admin
                                             </label>
                                         </div>
                                     @endif
                                     <div class="radio">
                                         <label>
                                             <input type="radio" name="rdoLevel" id="optionsRadios2"
-                                                   value="2">Member
+                                                   value="2"
+                                                   @if($data['level'] == 2)
+                                                   checked
+                                                    @endif
+                                            >Member
                                         </label>
                                     </div>
                                 </div>

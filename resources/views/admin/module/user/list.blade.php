@@ -42,12 +42,12 @@
                                     @endif
                                 </td>
                                 <td class="center">
-                                    <a href="#">
-                                        <img src="{!! asset('public/images/edit.png') !!}">
+                                    <a href="{!! route('getUserEdit', ['id' => $item['id']]) !!}">
+                                        <span class="glyphicon glyphicon-pencil"></span>
                                     </a>
                                     &nbsp;&nbsp;&nbsp;
                                     <a href="#">
-                                        <img src="{!! asset('public/images/delete.png') !!}">
+                                        <span class="glyphicon glyphicon-trash"></span>
                                     </a>
                                 </td>
                             </tr>

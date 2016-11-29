@@ -26,7 +26,8 @@ class UserAddRequest extends FormRequest
         return [
             'txtUsername' => ['required', 'min:4', 'max:12', 'regex:/^([a-z]+)([a-zA-z0-9])$/', 'unique:vt_users,username'],
             'txtPassword' => 'required|min:6',
-            'txtRepassword' => 'required|confirmed:txtUsername'
+            'txtRepassword' => 'required|same:txtPassword',
+            'txtFullname' => 'required'
         ];
     }
 
@@ -40,8 +41,9 @@ class UserAddRequest extends FormRequest
             'txtUsername.unique' => 'Tên đăng nhập đã tồn tại',
             'txtPassword.required' => 'Mật khẩu không được để trống',
             'txtRepassword.required' => 'Mật khẩu xác nhận không được để trống',
-            'txtRepassword.confirmed' => 'Mật khẩu xác nhận không khớp',
-            'txtRepassword.required'=>'Chưa nhập mật khẩu xác nhận'
+            'txtRepassword.same' => 'Mật khẩu xác nhận không khớp',
+            'txtRepassword.required' => 'Chưa nhập mật khẩu xác nhận',
+            'txtFullname.required' => 'Họ tên không được để trống'
         ];
     }
 }

@@ -288,7 +288,7 @@
                         <!-- /input-group -->
                     </li>
                     <li>
-                        <a href=""><i class="fa fa-dashboard fa-fw"></i> Thiết lập chung</a>
+                        <a href="{!! url('/admin') !!}"><i class="fa fa-dashboard fa-fw"></i> Thiết lập chung</a>
                     </li>
                     <li>
                         <a href="{!! route('getUserList') !!}"><i class="fa fa-table fa-fw"></i> Danh sách thành
@@ -305,6 +305,7 @@
     </nav>
 
     <div id="page-wrapper">
+    @include('block.flash')
     @yield('content')
     <!-- /.row -->
     </div>
